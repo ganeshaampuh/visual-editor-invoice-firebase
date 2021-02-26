@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "firebase": "^8.2.9",
+    "print-js": "^1.6.0",
     "vue": "^3.0.5"
   },
   "devDependencies": {
