@@ -99,13 +99,27 @@
             </div>
             
             <div class="border border-dashed mt-5"></div>
+
+            <div id="notes" class="mt-5">
+                <div class="mb-3">
+                    <p class="border border-dashed py-1 px-2 text-xs rounded inline">
+                        Catatan
+                    </p>
+                </div>
+
+                <div>
+                    <p class="text-xs text-left mb-4 px-3" contenteditable @input="event => notes = event.target.textContent">
+                        {{ notes }}
+                    </p>
+                </div>
+            </div>
         </div>
         <!-- Here We Go Template -->
     </main>
 </template>
 
 <script lang="ts">
-    import { defineComponent, onMounted, reactive } from 'vue'
+    import { defineComponent, onMounted, reactive, ref } from 'vue'
 
     import * as firebase from './firebase.js'
     import print from 'print-js'
@@ -131,6 +145,8 @@
                 address: 'Sumedang, Indonesia',
                 phoneNumber: '08112162229'
             })
+
+            const notes = ref('Default Notes')
             
             const fetchUsers = async () => {
                 const users = await firebase.usersCollection.doc().get()
@@ -154,7 +170,8 @@
                 receiver,
                 sender,
                 addUser,
-                handlePrint
+                handlePrint,
+                notes
             }
         }
     })
